@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import specialCommentConverter from '../special-comment-converter';
-import { deepFilterHTML } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML } from '@wordpress/dom';
 
 describe( 'specialCommentConverter', () => {
 	it( 'should convert a single "more" comment into a basic block', () => {

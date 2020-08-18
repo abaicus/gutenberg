@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import commentRemover from '../comment-remover';
-import { deepFilterHTML } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML } from '@wordpress/dom';
 
 describe( 'commentRemover', () => {
 	it( 'should remove a single comment', () => {

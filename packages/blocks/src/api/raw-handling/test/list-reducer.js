@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import listReducer from '../list-reducer';
-import { deepFilterHTML } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML } from '@wordpress/dom';
 
 describe( 'listReducer', () => {
 	it( 'should merge lists', () => {

@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import figureContentReducer from '../figure-content-reducer';
-import { deepFilterHTML } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML } from '@wordpress/dom';
 
 describe( 'figureContentReducer', () => {
 	const schema = {

@@ -14,11 +14,18 @@ import listReducer from './list-reducer';
 import blockquoteNormaliser from './blockquote-normaliser';
 import figureContentReducer from './figure-content-reducer';
 import shortcodeConverter from './shortcode-converter';
-import { deepFilterHTML, getBlockContentSchema } from './utils';
-
-import { getPhrasingContentSchema } from './phrasing-content';
+import getBlockContentSchema from './get-block-content-schema';
 
 export { pasteHandler } from './paste-handler';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML, getPhrasingContentSchema } from '@wordpress/dom';
+
+/**
+ * @deprecated since 5.6. Callers should import getPhrasingContentSchema directly from '@wordpress/dom' package.
+ */
 export { getPhrasingContentSchema };
 
 function getRawTransformations() {

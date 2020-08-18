@@ -22,6 +22,32 @@ _Returns_
 
 -   `?DOMRect`: The rectangle.
 
+<a name="deepFilterHTML" href="#deepFilterHTML">#</a> **deepFilterHTML**
+
+Given node filters, deeply filters HTML tags.
+Filters from the deepest nodes to the top.
+
+_Parameters_
+
+-   _HTML_ `string`: The HTML to filter.
+-   _filters_ `Array`: An array of functions that can mutate with the provided node.
+-   _schema_ `Object`: The schema to use.
+
+_Returns_
+
+-   `string`: The filtered HTML.
+
+<a name="deepFilterNodeList" href="#deepFilterNodeList">#</a> **deepFilterNodeList**
+
+Given node filters, deeply filters and mutates a NodeList.
+
+_Parameters_
+
+-   _nodeList_ `NodeList`: The nodeList to filter.
+-   _filters_ `Array`: An array of functions that can mutate with the provided node.
+-   _doc_ `Document`: The document of the nodeList.
+-   _schema_ `Object`: The schema to use.
+
 <a name="documentHasSelection" href="#documentHasSelection">#</a> **documentHasSelection**
 
 Check whether the current document has a selection. This checks for both
@@ -76,6 +102,22 @@ _Returns_
 
 -   `?Node`: Offset parent.
 
+<a name="getPhrasingContentSchema" href="#getPhrasingContentSchema">#</a> **getPhrasingContentSchema**
+
+Get schema of possible paths for phrasing content.
+
+_Related_
+
+-   <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content>
+
+_Parameters_
+
+-   _context_ `string`: Set to "paste" to exclude invisible elements and sensitive data.
+
+_Returns_
+
+-   `Object`: Schema.
+
 <a name="getRectangleFromRange" href="#getRectangleFromRange">#</a> **getRectangleFromRange**
 
 Get the rectangle of a given Range.
@@ -100,6 +142,15 @@ _Returns_
 
 -   `?Element`: Scrollable container node, if found.
 
+<a name="getSibling" href="#getSibling">#</a> **getSibling**
+
+Gets a sibling within text-level context.
+
+_Parameters_
+
+-   _node_ `Element`: The subject node.
+-   _which_ `string`: "next" or "previous".
+
 <a name="insertAfter" href="#insertAfter">#</a> **insertAfter**
 
 Given two DOM nodes, inserts the former in the DOM as the next sibling of
@@ -113,6 +164,19 @@ _Parameters_
 _Returns_
 
 -   `void`: 
+
+<a name="isEmpty" href="#isEmpty">#</a> **isEmpty**
+
+Recursively checks if an element is empty. An element is not empty if it
+contains text or contains elements with attributes such as images.
+
+_Parameters_
+
+-   _element_ `Element`: The element to check.
+
+_Returns_
+
+-   `boolean`: Wether or not the element is empty.
 
 <a name="isEntirelySelected" href="#isEntirelySelected">#</a> **isEntirelySelected**
 
@@ -152,6 +216,39 @@ _Parameters_
 _Returns_
 
 -   `boolean`: True if the element is input and holds a number.
+
+<a name="isPhrasingContent" href="#isPhrasingContent">#</a> **isPhrasingContent**
+
+Find out whether or not the given node is phrasing content.
+
+_Related_
+
+-   <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content>
+
+_Parameters_
+
+-   _node_ `Element`: The node to test.
+
+_Returns_
+
+-   `boolean`: True if phrasing content, false if not.
+
+<a name="isPlain" href="#isPlain">#</a> **isPlain**
+
+Checks wether HTML can be considered plain text. That is, it does not contain
+any elements that are not line breaks.
+
+_Parameters_
+
+-   _HTML_ `string`: The HTML to check.
+
+_Returns_
+
+-   `boolean`: Wether the HTML can be considered plain text.
+
+<a name="isTextContent" href="#isTextContent">#</a> **isTextContent**
+
+Undocumented declaration.
 
 <a name="isTextField" href="#isTextField">#</a> **isTextField**
 
@@ -212,6 +309,20 @@ _Parameters_
 _Returns_
 
 -   `void`: 
+
+<a name="removeInvalidHTML" href="#removeInvalidHTML">#</a> **removeInvalidHTML**
+
+Given a schema, unwraps or removes nodes, attributes and classes on HTML.
+
+_Parameters_
+
+-   _HTML_ `string`: The HTML to clean up.
+-   _schema_ `Object`: Schema for the HTML.
+-   _inline_ `Object`: Whether to clean for inline mode.
+
+_Returns_
+
+-   `string`: The cleaned up HTML.
 
 <a name="replace" href="#replace">#</a> **replace**
 

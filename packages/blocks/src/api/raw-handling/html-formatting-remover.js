@@ -1,7 +1,7 @@
 /**
- * Internal dependencies
+ * WordPress dependencies
  */
-import { getSibling } from './utils';
+import { getSibling } from '@wordpress/dom';
 
 function isFormattingSpace( character ) {
 	return (

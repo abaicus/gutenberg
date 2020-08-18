@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import blockquoteNormaliser from '../blockquote-normaliser';
-import { deepFilterHTML } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML } from '@wordpress/dom';
 
 describe( 'blockquoteNormaliser', () => {
 	it( 'should normalise blockquote', () => {

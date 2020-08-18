@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import imageCorrector from '../image-corrector';
-import { deepFilterHTML } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML } from '@wordpress/dom';
 
 describe( 'imageCorrector', () => {
 	it( 'should correct image source', () => {

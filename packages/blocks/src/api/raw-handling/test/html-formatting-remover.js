@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import filter from '../html-formatting-remover';
-import { deepFilterHTML, deepFilterNodeList } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML, deepFilterNodeList } from '@wordpress/dom';
 
 describe( 'HTMLFormattingRemover', () => {
 	it( 'should trim text node without parent', () => {

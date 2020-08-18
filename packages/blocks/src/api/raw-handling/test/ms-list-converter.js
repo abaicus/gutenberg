@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import msListConverter from '../ms-list-converter';
-import { deepFilterHTML } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML } from '@wordpress/dom';
 
 describe( 'msListConverter', () => {
 	it( 'should convert unordered list', () => {

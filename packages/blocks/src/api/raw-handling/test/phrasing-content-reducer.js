@@ -2,7 +2,11 @@
  * Internal dependencies
  */
 import phrasingContentReducer from '../phrasing-content-reducer';
-import { deepFilterHTML } from '../utils';
+
+/**
+ * WordPress dependencies
+ */
+import { deepFilterHTML } from '@wordpress/dom';
 
 describe( 'phrasingContentReducer', () => {
 	it( 'should transform font weight', () => {
