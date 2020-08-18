@@ -133,15 +133,27 @@ function render_block_core_navigation_link( $attributes, $content, $block ) {
 		'<a class="wp-block-navigation-link__content" ';
 
 	// Start appending HTML attributes to anchor tag.
-	if ( isset( $attributes['url'] ) ) {
-		$html .= ' href="' . esc_url( $attributes['url'] ) . '"';
+
+	if ( isset( $attributes['type'] ) && isset( $attributes['id'] ) ) {
+		if ( 'post_type' === $attributes['type'] ) {
+			$url = get_permalink( $attributes['id'] );
+		} elseif ( 'taxonomy' === $attributes['type'] ) {
+			$url = get_term_link( $attributes['id'] );
+		}
+	}
+
+	if ( ! isset( $url ) && isset( $attributes['url'] ) ) {
+		$url = $attributes['url'];
+	}
+
+	if ( isset( $url ) ) {
+		$html .= ' href="' . esc_url( $url ) . '"';
 	}
 
 	if ( isset( $attributes['opensInNewTab'] ) && true === $attributes['opensInNewTab'] ) {
 		$html .= ' target="_blank"  ';
 	}
 
-	// Start appending HTML attributes to anchor tag.
 	if ( isset( $attributes['rel'] ) ) {
 		$html .= ' rel="' . esc_attr( $attributes['rel'] ) . '"';
 	} elseif ( isset( $attributes['nofollow'] ) && $attributes['nofollow'] ) {

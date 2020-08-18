@@ -2,7 +2,7 @@
  * External dependencies
  */
 
-import { escape } from 'lodash';
+import { escape, some } from 'lodash';
 import classnames from 'classnames';
 
 /**
@@ -78,29 +78,64 @@ function getSelectedMenu( selectedCreateOption ) {
 /**
  * A recursive function that maps menu item nodes to blocks.
  *
- * @param {Object[]} nodes An array of menu items.
- *
+ * @param {Object[]} menuItems An array of menu items.
  * @return {WPBlock[]} An array of blocks.
  */
-function mapMenuItemsToBlocks( nodes ) {
-	return nodes.map( ( { title, type, link: url, id, children } ) => {
-		const innerBlocks =
-			children && children.length ? mapMenuItemsToBlocks( children ) : [];
-
-		return createBlock(
-			'core/navigation-link',
-			{
-				type,
-				id,
-				url,
+function mapMenuItemsToBlocks( menuItems ) {
+	return menuItems.map(
+		( {
+			title,
+			type,
+			description,
+			xfn,
+			object_id: objectId,
+			target,
+			url,
+			classes,
+			children,
+		} ) => {
+			const attributes = {
 				label: ! title.rendered
 					? __( '(no title)' )
 					: escape( title.rendered ),
-				opensInNewTab: false,
-			},
-			innerBlocks
-		);
-	} );
+				opensInNewTab: target === '_blank',
+			};
+
+			if ( type ) {
+				attributes.type = type;
+			}
+
+			if ( description ) {
+				attributes.description = description;
+			}
+
+			if ( xfn?.length && some( xfn ) ) {
+				attributes.rel = xfn.join( ' ' );
+			}
+
+			if ( objectId ) {
+				attributes.id = objectId;
+			}
+
+			if ( classes?.length && some( classes ) ) {
+				attributes.className = classes.join( ' ' );
+			}
+
+			if ( url ) {
+				attributes.url = url;
+			}
+
+			const innerBlocks = children?.length
+				? mapMenuItemsToBlocks( children )
+				: [];
+
+			return createBlock(
+				'core/navigation-link',
+				attributes,
+				innerBlocks
+			);
+		}
+	);
 }
 
 /**
